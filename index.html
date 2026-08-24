@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For MY LOVE. ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background: #050308;
+    color: #fff;
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+}
+#stars,
+#hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: .5;
+    animation: twinkle 3s infinite alternate;
+}
+@keyframes twinkle {
+    from { opacity: .15; transform: scale(.7); }
+    to { opacity: .9; transform: scale(1.4); }
+}
+section {
+    min-height: 100vh;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+.content {
+    width: min(900px, 100%);
+    text-align: center;
+}
+.hero {
+    overflow: hidden;
+}
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(255,50,120,.16), transparent 65%);
+    animation: breathe 5s infinite alternate;
+}
+@keyframes breathe {
+    from { transform: scale(.8); opacity: .4; }
+    to { transform: scale(1.2); opacity: 1; }
+}
+.small-text {
+    color: #bdaebc;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-size: 11px;
+    margin-bottom: 25px;
+}
+.hero h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(65px, 13vw, 150px);
+    font-weight: 400;
+    line-height: .8;
+    position: relative;
+}
+.hero h1 span {
+    display: block;
+    background: linear-gradient(
+        90deg,
+        #fff,
+        #ff8fb7,
+        #fff
+    );
+    background-size: 200%;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: shine 4s infinite;
+}
+@keyframes shine {
+    0% { background-position: 0%; }
+    50% { background-position: 100%; }
+    100% { background-position: 0%; }
+}
+.hero p {
+    max-width: 500px;
+    margin: 35px auto;
+    color: #aaa0aa;
+    line-height: 1.8;
+    font-size: 15px;
+}
+.enter {
+    border: 1px solid rgba(255,255,255,.25);
+    background: rgba(255,255,255,.04);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: .4s;
+    backdrop-filter: blur(10px);
+}
+.enter:hover {
+    background: #ff4f87;
+    border-color: #ff4f87;
+    box-shadow: 0 0 40px rgba(255,79,135,.4);
+    transform: scale(1.06);
+}
+.flying-heart {
+    position: fixed;
+    z-index: 100;
+    pointer-events: none;
+    font-size: 18px;
+    animation: flyHeart 2.5s ease-out forwards;
+}
+@keyframes flyHeart {
+    0% {
+        transform: translate(0,0) scale(.3) rotate(0);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    100% {
+        transform:
+            translate(
+                calc((var(--x) - .5) * 100vw),
+                calc((var(--y) - .5) * 100vh)
+            )
+            scale(1.5)
+            rotate(360deg);
+        opacity: 0;
+    }
+}
+.birthday h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(50px, 9vw, 100px);
+    font-weight: 400;
+}
+.birthday h2 span {
+    color: #ff719f;
+}
+.birthday p {
+    margin-top: 25px;
+    color: #aaa0aa;
+}
+.photo-section {
+    flex-direction: column;
+}
+.photo-frame {
+    width: min(500px, 90vw);
+    position: relative;
+    transform: rotate(-2deg);
+    transition: .8s;
+}
+.photo-frame:hover {
+    transform: rotate(0deg) scale(1.03);
+}
+.photo-frame::before {
+    content: "";
+    position: absolute;
+    inset: -15px;
+    border: 1px solid rgba(255,255,255,.12);
+    transform: rotate(3deg);
+    z-index: -1;
+}
+.photo-frame img {
+    width: 100%;
+    display: block;
+    filter: saturate(.85);
+}
+.photo-caption {
+    background: #fff;
+    color: #201820;
+    padding: 18px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 21px;
+}
+.memories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 50px;
+}
+.memory {
+    padding: 35px 20px;
+    border: 1px solid rgba(255,255,255,.1);
+    background: rgba(255,255,255,.035);
+    backdrop-filter: blur(12px);
+    transition: .5s;
+}
+.memory:hover {
+    transform: translateY(-12px);
+    border-color: rgba(255,100,150,.4);
+    box-shadow: 0 20px 50px rgba(255,50,120,.08);
+}
+.memory .emoji {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+.memory h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.memory p {
+    font-size: 13px;
+    color: #a9a0a9;
+    line-height: 1.7;
+}
+.letter {
+    max-width: 650px;
+    margin: auto;
+    text-align: left;
+    padding: 50px 40px;
+    background: rgba(255,255,255,.035);
+    border-left: 1px solid #ff5c8e;
+    box-shadow: -20px 0 80px rgba(255,50,120,.04);
+}
+.letter h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 38px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+.letter p {
+    color: #bcb2bc;
+    font-size: 15px;
+    line-height: 2;
+    margin-bottom: 20px;
+}
+.kiss {
+    text-align: center;
+}
+.big-heart {
+    font-size: 100px;
+    animation: heartbeat 1.4s infinite;
+    filter: drop-shadow(0 0 30px rgba(255,60,120,.5));
+}
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.18); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.12); }
+    60% { transform: scale(1); }
+}
+.kiss h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(45px, 8vw, 85px);
+    font-weight: 400;
+    margin-top: 30px;
+}
+.kiss p {
+    max-width: 500px;
+    margin: 25px auto;
+    color: #aaa0aa;
+    line-height: 1.8;
+}
+.final {
+    overflow: hidden;
+}
+.final h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(55px, 11vw, 120px);
+    font-weight: 400;
+    line-height: .9;
+}
+.final h2 span {
+    color: #ff5b8d;
+}
+.final p {
+    margin-top: 35px;
+    color: #aaa0aa;
+}
+.signature {
+    margin-top: 45px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 30px;
+    color: #ff8eaf;
+}
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 1.2s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+</head>
+<body>
+<div id="stars"></div>
+<div id="hearts"></div>
+<section class="hero">
+<div class="content">
+<div class="small-text">
+A little something for you
+</div>
+<h1>
+Happy
+<span>19th</span>
+Avuuu.
+</h1>
+<p>
+To the girl who somehow became my favorite person, my favorite notification, and probably the person I want to be childish and clingy with for the rest of our lives.
+</p>
+<button class="enter" onclick="startExperience()">
+tap here love ❤️
+</button>
+</div>
+</section>
+<section class="birthday">
+<div class="content reveal">
+<div class="small-text">
+At the end, all this effort is worth it for you, and Forever will be.
+</div>
+<h2>
+Happy Birthday,
+<br>
+<span>CHANT BAUNIIII</span>
+</h2>
+<p>
+19 looks really good on you,<br> def not more than ME.
+</p>
+</div>
+</section>
+<section class="photo-section">
+<div class="content reveal">
+<div class="small-text">
+I love you soo muchh avuuu.
+</div>
+<div class="photo-frame">
+<img src="photo1.jpeg" alt="Our memory">
+<div class="photo-caption">
+Even one picture with you is enough to make me blush.
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="content reveal">
+<div class="small-text">
+Things I absolutely fucking love
+</div>
+<h2 style="
+font-family:'Cormorant Garamond';
+font-size:55px;
+font-weight:400;
+">
+Us.
+</h2>
+<div class="memories">
+<div class="memory">
+<div class="emoji">🫂</div>
+<h3>Your clinginess</h3>
+<p>
+Okay fine. I just fuckingggg loveeee ittttt, why cant we just roam around while i hold your waist everywhere we go, i love itttttttttttttttt.
+</p>
+</div>
+<div class="memory">
+<div class="emoji">💋</div>
+<h3>Those cheeks</h3>
+<p>
+I fucking miss those cheeks on my life, best of luck for our next date, im gonna fucking bite them off.
+</p>
+</div>
+<div class="memory">
+<div class="emoji">🤍</div>
+<h3>Just you</h3>
+<p>
+The random conversations, all touchy,
+giggling and absolutely destroying eachothers lips.
+I love all of it.
+</p>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="content reveal">
+<div class="letter">
+<h2>
+Okay... lets be serious.
+</h2>
+<p>
+Happy birthday, love.
+</p>
+<p>
+I know we've only actually been together
+since 7 months, which honestly sounds
+crazy considering how we love eachother so fuckinggggg deeplyyyy.
+</p>
+<p>
+Two meetings, countless conversations,
+way too many kisses, a ridiculous amount of
+cuddles and specially those whispers, ohh myyy gawwddd.
+</p>
+<p>
+I wish I could be there today.
+I wish I could just hug you, kiss you,
+annoy you and spend the whole day with you
+instead of staring at just a screen.
+</p>
+<p>
+But until we get that chance again on 19th,
+I hope you know how deeply i fucking miss you.
+</p>
+<p>
+I hope 19 brings you everything you want.
+</p>
+<p>
+Thank you for being my person avika... Forever grateful for you and your love.
+</p>
+<p>
+And yes...
+Each and everyday while making this, i miss you itna ganda that i'll tbh just bite you, yaar i miss those warm cheeks, i promise ill always be this clingy and love to the fullest.
+Youre stuck with me forever, twin.
+You don't get a choice anymore. ❤️
+</p>
+<p>
+Fuckkkk youuuu Avikaaaa
+</p>
+</div>
+</div>
+</section>
+<section class="kiss">
+<div class="content reveal">
+<div class="big-heart">
+❤️
+</div>
+<h2>
+One more thing...
+</h2>
+<p>
+If I were with you right now, I'd probably just pull you into a hug, caress your cheeks with my thumb while telling you how much I love you, then kiss you a hundred times and refuse to let you go.
+</p>
+<p>
+So consider this as the long distance version.
+</p>
+</div>
+</section>
+<section class="final">
+<div class="content reveal">
+<div class="small-text">
+And finally...
+</div>
+<h2>
+I love you
+<br>
+<span>so much.</span>
+</h2>
+<p>
+Happy 19th birthday, Avu <br>
+My love, My life, My baby and after all, MY EVERYTHING.
+</p>
+<div class="signature">
+— Chanttt lendaaa,
+yours, foreverrrr ❤️
+</div>
+</div>
+</section>
+<script>
+const stars = document.getElementById("stars");
+for(let i = 0; i < 180; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.animationDelay =
+        Math.random() * 3 + "s";
+    star.style.animationDuration =
+        2 + Math.random() * 4 + "s";
+    stars.appendChild(star);
+}
+function startExperience() {
+    window.scrollTo({
+        top: window.innerHeight,
+        behavior: "smooth"
+    });
+    createHearts(80);
+}
+function createHearts(amount) {
+    const emojis = [
+        "❤️",
+        "💕",
+        "💗",
+        "💖",
+        "💋",
+        "✨"
+    ];
+    for(let i = 0; i < amount; i++) {
+        setTimeout(() => {
+            const heart =
+                document.createElement("div");
+            heart.className = "flying-heart";
+            heart.innerHTML =
+                emojis[Math.floor(Math.random() * emojis.length)];
+            heart.style.left =
+                Math.random() * 100 + "vw";
+            heart.style.top =
+                Math.random() * 100 + "vh";
+            heart.style.setProperty(
+                "--x",
+                Math.random()
+            );
+            heart.style.setProperty(
+                "--y",
+                Math.random()
+            );
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 3000);
+        }, i * 30);
+    }
+}
+const observer =
+new IntersectionObserver(
+(entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting) {
+            entry.target.classList.add("visible");
+        }
+    });
+},
+{
+    threshold: 0.2
+});
+document
+.querySelectorAll(".reveal")
+.forEach(element => {
+    observer.observe(element);
+});
+window.addEventListener("scroll", () => {
+    const final =
+        document.querySelector(".final");
+    const rect =
+        final.getBoundingClientRect();
+    if(rect.top < window.innerHeight * .7 &&
+       rect.bottom > 0) {
+        if(!final.dataset.done) {
+            final.dataset.done = "true";
+            createHearts(120);
+        }
+    }
+});
+</script>
+</body>
+</html>
